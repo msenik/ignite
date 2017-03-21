@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+//Задача 1
+function createAccumulator(){
+	let total = 0;
+	return function (n) {
+		return total += n;
+	}
+}
+const sum = createAccumulator();
+console.log( 'Задача 1:', sum(3) );
+console.log( 'Задача 1:', sum(5) );
+console.log( 'Задача 1:', sum(228) );
+
+
+//Задача 2
+function strCount(obj){
+	return Object.values(obj).filter(v => typeof v === "string").length;
+}
+const obj = {name:'Natalka', surname:'Poltavka', age:25, iq:120};
+console.log('Задача 2:', `Кількість рядкових властивостей: ${strCount(obj)}`);
+
+//Задача 3
+function add(a){
+	return function(b){
+		return a+b;
+	}
+}
+console.log( 'Задача 3:',add(3)(4) );
+
+</script>
+</body>
+</html>
