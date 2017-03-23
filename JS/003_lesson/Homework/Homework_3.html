@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+//Задача 1.
+var sum = function sum(a){
+	var total = a;
+
+	function foo(b){
+		total += b;
+		return foo;
+	}
+
+	foo.valueOf = function(){
+		return total;
+	}
+	foo.toString = function(){
+		return total;
+	}
+	return foo;
+}
+console.log( sum(1)(2) == 3 );
+console.log( sum(1)(2)(3) == 6 );
+console.log( sum(5)(-1)(2) == 6 );
+console.log( sum(6)(-1)(-2)(-3) == 0 );
+console.log( sum(0)(1)(2)(3)(4)(5) == 15 );
+
+
+
+//Задача 2.
+function runString(arg, obj){
+	if( !(typeof obj == 'object') ) throw new Error("Параметер obj повинен бути об'єктом");
+	if( !(typeof obj.param == 'string') ) throw new Error("в об'єкті повинна бути властивість obj.param рядкового типу");
+	if( !(typeof obj.func == 'string') ) throw new Error("в об'єкті повинна бути властивість obj.func рядкового типу");
+
+	var f = new Function(obj.param, obj.func);
+	return f(arg);
+}
+
+var arg = 4,
+    obj = {
+      param: 'num',
+      func: 'return Math.sqrt(num)'
+    };
+
+runString(arg, obj);
+
+
+
+//Задача 3.
+var ladder = {
+  step: 0,
+  up: function() { // вверх по лестнице
+    this.step++;
+		return this;
+  },
+  down: function() { // вниз по лестнице
+    this.step--;
+		return this;
+  },
+  showStep: function() { // вывести текущую ступеньку
+    alert( this.step );
+		return this;
+  }
+};
+
+</script>
+</body>
+</html>
