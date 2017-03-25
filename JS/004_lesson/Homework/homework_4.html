@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+//Задача 1.
+Function.prototype.callIt = function(thisArg){
+  var args = [].slice.apply(arguments,[1]);
+  this.apply(thisArg,args);
+}
+
+function f(a,b,c){
+  alert( JSON.stringify(this) );
+  alert(a);
+  alert(b);
+  alert(c);
+}
+f.callIt(1,2,3);
+
+
+
+//Задача 2.
+function compose(val) {
+  var args = [].slice.apply(arguments,[1]);
+  return args.reduce(function(prev,current){
+    return current(prev);
+  },val);
+}
+
+//ES6 варіант
+function compose2(val,...funcs) {
+  return funcs.reduce((prev,current) => current(prev), val);
+}
+
+var doubleTheValue = function(val) { return val * 2; }
+var addOneToTheValue = function(val) { return val + 1; }
+
+console.log( compose(5) );
+console.log( compose(5, doubleTheValue) ); //должно вернуться значение 10
+console.log( compose(5, doubleTheValue, addOneToTheValue) ); // должно вернуться значение  11
+
+console.log( compose2(5) );
+console.log( compose2(5, doubleTheValue) ); //должно вернуться значение 10
+console.log( compose2(5, doubleTheValue, addOneToTheValue) ); // должно вернуться значение  11
+
+
+
+//Задача 3.
+function work(a) {
+  console.log("Hello from work function!") // work - произвольная функция, один аргумент
+}
+
+function makeLogging(f, log) {
+  return function(arg){
+    log.push(arg);
+    f(arg);
+  }
+}
+
+var log = [];
+work = makeLogging(work, log);
+
+work(1); // 1, добавлено в log
+work(5); // 5, добавлено в log
+
+for (var i = 0; i < log.length; i++) {
+  alert( 'Лог:' + log[i] ); // "Лог:1", затем "Лог:5"
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+/*
+Задача 1. Напишите функцию sumArgs, которая суммирует все свои аргументы.
+При решении задачи используйте метод call или apply.
+*/
+function sumArgs(){
+	return [].reduce.call(arguments,(a,b) => a+b);
+}
+console.log( sumArgs(1,23,3) );
+
+
+//Задача 2. Перепишите с использованием встроенного метода bind:
+var user = {
+  firstName: "Вася",
+  sayHi: function() {
+    alert( this.firstName );
+  }
+};
+
+var sayHi = user.sayHi;
+f = sayHi.bind(user);
+f();
+
+
+/*Задача 3. Напишите функцию joinArgs, которая выводит свои аргументы,
+разделенные символом ‘*’ на экран в виде строки.
+Используйте прием “одалживания методов”. У вас должно получиться:
+*/
+function joinArgs(){
+	arguments.join = [].join;
+	return arguments.join('*');
+}
+
+joinArgs(1,2,3) // 1*2*3
+joinArgs('hello', 'world', '!') // hello*world*!
+
+</script>
+</body>
+</html>
