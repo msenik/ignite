@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+//Задача 1.
+var result;
+while (true) {
+  var expression = prompt("Введіть вираз", '');
+  if (!expression) break;
+
+  try {
+    result = eval(expression);
+    if (isNaN(result)) {
+      throw new Error();
+    }
+
+    break;
+  } catch (e) {
+    alert("Невірний вираз. Повторіть спробу");
+  }
+}
+alert(result);
+
+
+//Задача 2.
+function smartSum(...args){
+  let total = args.reduce((a,b) => {
+    return (parseInt(a) ? a : 0) + (parseInt(b) ? b : 0);
+  },0);
+  function foo(...args) {
+    total += args.reduce((a,b) => {
+      return (parseInt(a) ? a : 0) + (parseInt(b) ? b : 0);
+    },0);
+    return foo;
+  }
+  foo.valueOf = foo.toString = function(){
+		return total;
+	}
+	return foo;
+}
+console.log( smartSum(3) )// 3;
+console.log( smartSum(1, 2) )  // 3;
+console.log( smartSum(1, 3)(2) ) // 6;
+console.log( smartSum(1, 2)(3, 4, 5)(6)(7, 10) ) // 38;
+console.log( smartSum(1, 2)(3, 4, 5)('string')(7, 10) ) // 32;
+
+
+//Задача 3.
+var timerChecker = setInterval(function(){
+  if (window.timer){
+    clearInterval(timerChecker);
+    var notifier = setInterval(function(){
+      if(window.timer < 1){
+        clearInterval(notifier);
+      }
+      document.write(window.timer--,'<br>');
+    },1000);
+  }
+},1000);
+var timer = 10;
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Логическое преобразование объекта </title>
+</head>
+
+<body>
+<script>
+/*
+Задача 1.
+Напишите функцию printNumber, которая последовательно выводит в консоль числа от 1 до 20, с интервалом между числами 100мс.
+То есть, весь вывод должен занимать 2000мс, в течение которых каждые 100мс в консоли появляется очередное число.
+*/
+function printNumber(){
+	var i = 1;
+	var interval = setInterval(function () {
+		if (i>20) {
+			clearInterval(interval);
+			return;
+		}
+		console.log(i++);
+	}, 100);
+}
+
+
+/*
+Задача 2.
+Превратите объект leader из примера ниже в JSON.
+После этого конвертируйте получившуюся строку обратно в объект.
+*/
+var leader = {
+  name: "Василий Иванович",
+  age: 35
+};
+
+var leaderJSON = JSON.stringify(leader);
+console.log(leaderJSON);
+var leader2 = JSON.parse(leaderJSON);
+console.log(leader2);
+
+
+/*
+Задача 3.
+Напишите функцию, которая принимает один аргумент и возвращает его тип данных.
+Выполните обработку исключений в случае передачи двух и больше аргументов.
+*/
+function getType(arg) {
+	if (arguments.length > 1) throw new Error('Помилка. Функція приймає тільки один аргумент');
+	return typeof arg;
+}
+
+try{
+	console.log( getType(1) );
+	console.log( getType('1') );
+	console.log( getType({}) );
+	console.log( getType([]) );
+	console.log( getType(1,2) ); //Помилка
+}catch(e){
+	alert(e.message);
+}
+
+</script>
+</body>
+</html>
