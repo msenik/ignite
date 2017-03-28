@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 7, classwork</title>
+<style>
+ span {
+   color:red;
+ }
+</style>
+</head>
+
+<body>
+<p>Параграф 1</p>
+<p>Параграф 2</p>
+<p>Параграф 3</p>
+<span>Текст що переміщається</span>
+
+<script>
+/*
+###Задача 1. Создайте страницу. Разместите на ней произвольное количеством элементов.
+Разработайте сценарий, который будет по очереди перемещать span с текстом и интервалом в 400мс:
+Перед элементом.
+Внутри элемента перед тектом
+Внетри элемента после текста.
+После элемента.
+*/
+var span = document.querySelector('span');
+var target =  document.querySelectorAll('p')[1];
+var positions = ['beforeBegin','afterBegin','beforeEnd','afterEnd'];
+var counter = 0;
+setInterval(function(){
+  target.insertAdjacentElement(positions[counter], span);
+  counter = counter == 3 ? 0 : counter + 1;
+},400);
+</script>
+</body>
+</html>
