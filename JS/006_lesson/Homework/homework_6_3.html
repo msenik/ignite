@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 6, homework, Task 3</title>
+</head>
+  <script>
+/*
+Задача 3 Метод elem.closest(css) для поиска ближайшего родителя, удовлетворяющего селектору css,
+не поддерживается некоторыми браузерами, например IE11-. Создайте для него полифилл.
+*/
+(function() {
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(selector) {
+      var el = this;
+      while (el) {
+        if (el.matches(selector)) return el;
+        else el = el.parentElement;
+      }
+      return null;
+    };
+  }
+})();
+  </script>
+</body>
+</html>
