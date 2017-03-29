@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 7, homework, Task 1</title>
+<style>
+div:nth-child(n) {
+  background-color:red;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+div:nth-child(2n){
+  background-color:green;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+}
+div:nth-child(3n) {
+  background-color:blue;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+div{
+  transition: all 0.5s ease;
+}
+</style>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+
+  <script>
+/*
+Задача 1.
+Создайте страницу с 3 элементами div.
+Напишите сценарий, который будет произвольно менять положение этих элементов на странице каждую секунду.
+*/
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getWindowSize(param){
+  switch (param) {
+  case 'w': return document.documentElement.clientWidth;
+  case 'h': return document.documentElement.clientHeight;
+  }
+}
+
+var divs = document.querySelectorAll('div');
+
+function setRandomPosition(){
+  for(var i=0; i<divs.length; i++){
+    divs[i].style.top = getRandomInt(0, getWindowSize('h') - divs[i].offsetHeight)+'px';
+    divs[i].style.left = getRandomInt(0, getWindowSize('w') - divs[i].offsetWidth)+'px';
+  }
+}
+
+setInterval(setRandomPosition,1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 7, homework, Task 3</title>
+<style>
+td{
+  border: 1px solid black;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+  <script>
+/*
+Задача 3.
+Напишите функцию makeBoard, которая генерирует таблицу с указанным количеством строк и столбцов
+и закрашивает ее ечейки черным и белым цветами в шахматном порядке.
+*/
+function makeBoard(rowsCount,colsCount) {
+  var table = document.createElement('table');
+  for(var r=1; r<=rowsCount; r++){
+    var tr = document.createElement('tr');
+    for(var c=1; c<=colsCount; c++){
+      var td = document.createElement('td');
+      if( (r+c)%2 == 1 ) {
+        td.style.backgroundColor = 'black';
+        td.style.color = 'white';
+      }
+      var textNode = document.createTextNode( r*10+c-10 );
+      td.appendChild(textNode);
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+    document.body.appendChild(table);
+  }
+}
+makeBoard(10,10);
+  </script>
+</body>
+</html>
