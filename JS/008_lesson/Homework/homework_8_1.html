@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 8, homework, Task 1</title>
+<style>
+#wrapper{
+  display: table;
+}
+label{
+  display: table-row;
+}
+span,label input{
+  display: table-cell;
+}
+span{
+  padding: 10px;
+}
+input[type='button']{
+ margin: 10px;
+}
+.warning{
+  background-color: red;
+}
+</style>
+</head>
+<script>
+/*
+Задача 1.
+Создайте регистрационную форму: логин, пароль, телефон и кнопка "Отправить". По нажатию на кнопку "Отправить", проверьте корректность ввода данных с помощью JavaScript.
+Логин - не должен содержать цифры.
+Пароль - не дожен содержать знак $.
+Телефон - должен содержать только цифры.
+Закрасьте фон поля ввода в красный цвет, если были введены неправильные данные.
+Используйте для решение данной задачи методы для работы со строками или регулярные выражения: link
+*/
+window.addEventListener("load", function () {
+ submit.addEventListener("click",function(e){
+  var isCorrectLogin = login.value.length && !/\d/g.test(login.value);
+  var isCorrectPassword = password.value.length && !/\$/g.test(password.value);
+  var isCorrectPhone = phone.value.length && !/\D/g.test(phone.value);
+
+  isCorrectLogin ? login.classList.remove('warning') : login.classList.add('warning');
+  isCorrectPassword ? password.classList.remove('warning') : password.classList.add('warning');
+  isCorrectPhone ? phone.classList.remove('warning') : phone.classList.add('warning');
+ });
+});
+</script>
+<body>
+
+<form action="">
+  <div id="wrapper">
+    <label>
+     <span>Логін</span>
+     <input type="text" id="login"></input>
+    </label>
+
+    <label>
+     <span>Пароль</span>
+     <input type="text" id="password"></input>
+    </label>
+
+    <label>
+     <span>Телефон</span>
+     <input type="text" id="phone"></input>
+    </label>
+  </div>
+  <input type="button" value="Відправити" id="submit"></input>
+</form>
+
+</body>
+</html>

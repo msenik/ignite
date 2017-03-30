@@ -1,0 +1,14 @@
+div{
+ width: 100px;
+ height: 100px;
+ float: left;
+ background-color: green;
+ margin: 10px;
+}
+.selected{
+ background-color: red;
+}
+button{
+ display: block;
+ clear: left;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Lesson 8.2, classwork</title>
+<script>
+/*
+Задача 2.
+Создайте страницу. Разместите на странице поле ввода, кнопку и пустой div.
+Создайте сценарий, который при нажатии на кнопку будет записывать содержимое поля ввода в пустой div.
+*/
+window.onload = function(){
+ var input = document.querySelector('input');
+ var button = document.querySelector('button');
+ var div = document.querySelector('div');
+ button.onclick = function(){
+  div.textContent = input.value;
+ }
+}
+</script>
+</head>
+<body>
+ <input type="text"></input>
+ <br>
+ <button>Load</button>
+ <div></div>
+</body>
+</html>
