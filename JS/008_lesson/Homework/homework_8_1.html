@@ -36,10 +36,11 @@ input[type='button']{
 Используйте для решение данной задачи методы для работы со строками или регулярные выражения: link
 */
 window.addEventListener("load", function () {
- submit.addEventListener("click",function(e){
-  var isCorrectLogin = login.value.length && !/\d/g.test(login.value);
-  var isCorrectPassword = password.value.length && !/\$/g.test(password.value);
-  var isCorrectPhone = phone.value.length && !/\D/g.test(phone.value);
+ sampleForm.addEventListener("submit",function(e){
+  e.preventDefault();
+  var isCorrectLogin = !/\d/g.test(login.value);
+  var isCorrectPassword = !/\$/g.test(password.value);
+  var isCorrectPhone = !/\D/g.test(phone.value);
 
   isCorrectLogin ? login.classList.remove('warning') : login.classList.add('warning');
   isCorrectPassword ? password.classList.remove('warning') : password.classList.add('warning');
@@ -49,24 +50,24 @@ window.addEventListener("load", function () {
 </script>
 <body>
 
-<form action="">
+<form action="" id="sampleForm">
   <div id="wrapper">
     <label>
      <span>Логін</span>
-     <input type="text" id="login"></input>
+     <input type="text" id="login" required></input>
     </label>
 
     <label>
      <span>Пароль</span>
-     <input type="text" id="password"></input>
+     <input type="text" id="password" required></input>
     </label>
 
     <label>
      <span>Телефон</span>
-     <input type="text" id="phone"></input>
+     <input type="text" id="phone" required></input>
     </label>
   </div>
-  <input type="button" value="Відправити" id="submit"></input>
+  <input type="submit" value="Відправити" id="submit"></input>
 </form>
 
 </body>
