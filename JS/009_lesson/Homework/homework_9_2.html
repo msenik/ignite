@@ -5,17 +5,9 @@
   <meta charset="utf-8">
   <title>Lesson 9, homework, Task 2</title>
   <style>
-    #wrapper {
-      position: fixed;
-      width: 120px;
-      height: 120px;
-      background-color: transparent;
-      border-radius: 50%;
-      transition: all .1s;
-    }
 
     #circle {
-      position: absolute;
+      position: fixed;
       top: 10px;
       left: 10px;
       width: 100px;
@@ -40,22 +32,53 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
 
-      wrapper.addEventListener("mouseenter", function (e) {
-        var windowW = document.documentElement.clientWidth;
-        var widnowH = document.documentElement.clientHeight
-        var newLeftPos = getRandomInt(0, windowW - e.target.clientWidth);
-        var newTopPos = getRandomInt(0, widnowH - e.target.clientHeight);
-        e.target.style.left = newLeftPos + 'px';
-        e.target.style.top = newTopPos + 'px';
+      document.addEventListener("mousemove", function (e) {
+        rect = circle.getBoundingClientRect();
+        var t = rect.top;
+        var b = rect.bottom;
+        var l = rect.left;
+        var r = rect.right;
+        var x = e.clientX;
+        var y = e.clientY;
+        var h = document.documentElement.clientHeight;
+        var w = document.documentElement.clientWidth;
+        var rad = circle.clientWidth/2;
+        var step = 70;
+
+        if(t>h-10){
+          circle.style.top = 10+'px';
+        }
+        if(l>w-10){
+          circle.style.left = 10+'px';
+        }
+        if(r<10){
+          circle.style.left = (w-rad*2-10)+'px';
+        }
+        if(b<10){
+          circle.style.top = (h-rad*2-10)+'px';
+        }
+
+        if(x>l && x<r && y>t && y<b){
+          if(x>l+rad+25){
+            circle.style.left = (l - step)+ 'px';
+          }
+          if(x>l && x<l+rad-rad/2){
+            circle.style.left = (l + step)+ 'px';
+          }
+          if(y>t+rad+rad/2){
+            circle.style.top = (t - step)+ 'px';
+          }
+          if(y>t && y<t+rad-rad/2){
+            circle.style.top = (t + step)+ 'px';
+          }
+        }
       });
     });
   </script>
 </head>
 
 <body>
-  <div id="wrapper">
     <div id="circle">Скидка!</div>
-  </div>
 </body>
 
 </html>
