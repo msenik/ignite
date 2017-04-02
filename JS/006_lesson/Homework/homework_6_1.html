@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta charset="utf-8">
-<title>Lesson 6, homework, Task 1</title>
+  <meta charset="utf-8">
+  <title>Lesson 6, homework, Task 1</title>
 </head>
 
 <body>
@@ -34,7 +35,6 @@
             <li>Гуппи</li>
             <li>Скалярии</li>
           </ul>
-
         </li>
         <li>Морские
           <ul>
@@ -46,19 +46,20 @@
   </ul>
 
   <script>
-/*
+    /*
 Есть дерево из тегов ul и li.
 Напишите код, который для каждого элемента li выведет:
 Текст непосредственно в нём указанный (без подразделов).
 Количество всех вложенных в него элементов li.
 */
-var lis = document.getElementsByTagName('li');
-for (var i=0;i<lis.length;i++){
-  var li = lis[i];
-  var caption = li.firstChild.nodeValue.trim();
-  var count = li.getElementsByTagName('li').length;
-  alert(caption+': '+count);
-}
+    var lis = document.getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+      var li = lis[i];
+      var caption = li.firstChild.nodeValue.trim();
+      var count = li.getElementsByTagName('li').length;
+      alert(caption + ': ' + count);
+    }
   </script>
 </body>
+
 </html>

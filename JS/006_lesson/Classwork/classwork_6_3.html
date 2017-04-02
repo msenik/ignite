@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta charset="utf-8">
-<title>Lesson 6, classwork, Task 3</title>
-<style>
-	body{
-		font-size:2em;
-	}
 
-	td{
-		border: 1px solid black;
-	}
-</style>
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 6, classwork, Task 3</title>
+  <style>
+    body {
+      font-size: 2em;
+    }
+
+    td {
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
@@ -53,13 +54,13 @@
       <td>5:5</td>
     </tr>
   </table>
-
   <script>
-var trs = document.getElementsByTagName('tr');
-[].forEach.call(trs,function(tr,i){
-	var td = tr.getElementsByTagName('td')[i];
-	td.style.backgroundColor = 'red';
-});
+    var trs = document.getElementsByTagName('tr');
+    [].forEach.call(trs, function (tr, i) {
+      var td = tr.getElementsByTagName('td')[i];
+      td.style.backgroundColor = 'red';
+    });
   </script>
 </body>
+
 </html>

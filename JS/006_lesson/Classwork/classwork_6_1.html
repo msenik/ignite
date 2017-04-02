@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta charset="utf-8">
-<title>Lesson 6, classwork, Task 1</title>
+  <meta charset="utf-8">
+  <title>Lesson 6, classwork, Task 1</title>
 </head>
 
 <body>
@@ -14,21 +15,22 @@
   </ul>
 
   <script>
-/*
+    /*
 Задача 1.
 Напишите код, который получит объект для тега head и запишет его в переменную.
 Напишите код, который получит объект для тега ul и запишет его в переменную.
 Напишите код, который получит объект для второго тега li и запишет его в переменную.
 */
-var head = document.getElementsByTagName('head')[0];
-console.log(head);
+    var head = document.documentElement.firstChild;
+    console.log(head);
 
-var ul = document.getElementsByTagName('ul')[0];
-console.log(ul);
+    var ul = document.body.children[1];
+    console.log(ul);
 
-var li = document.getElementsByTagName('ul')[0].lastElementChild;
-console.log(li);
+    var li = document.body.children[1].lastElementChild;
+    console.log(li);
   </script>
 
 </body>
+
 </html>
