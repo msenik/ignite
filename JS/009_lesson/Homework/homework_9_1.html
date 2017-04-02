@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 9, homework, Task 1</title>
+  <style>
+    .selected {
+      background-color: aqua;
+    }
+  </style>
+  <script>
+    /*
+Задача 1.
+Сделайте список, элементы которого можно выделять кликом. Используйте для решения данной задачи свойство e.target.
+*/
+    window.addEventListener("load", function () {
+      var frameworks = document.getElementById('frameworks');
+      frameworks.addEventListener('click', function (e) {
+        for (var i = 0; i < frameworks.children.length; i++) {
+          frameworks.children[i].classList.remove('selected');
+        }
+        e.target.classList.add('selected');
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <ul id="frameworks">
+    <li>Angular.js</li>
+    <li>Angular 2</li>
+    <li>React</li>
+    <li>Vue</li>
+    <li>Evmer</li>
+    <ul>
+</body>
+
+</html>

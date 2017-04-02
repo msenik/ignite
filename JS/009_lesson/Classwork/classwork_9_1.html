@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="classwork_8_1.css"></link>
+  <title>Lesson 9.1, classwork</title>
+  <script>
+    /*
+Задача 1.
+Создайте страницу. Реализуйте следующее:
+При нажатии комбинации клавиш ctrl + a (регистр не учитывается!) на экран выводится сообщение ‘Данные выбраны’;
+При нажатии комбинации клавиш ctrl + s (регистр не учитывается!) на экран выводится сообщение ‘Данные сохранены’;
+*/
+    window.addEventListener('load', function () {
+      window.addEventListener('keydown', function (e) {
+        e.preventDefault();
+        if (!e.ctrlKey) return;
+        switch (e.keyCode) {
+          case 65:
+            alert('Дані вибрані');
+            break;
+          case 83:
+            alert('Дані збережені');
+            break;
+        }
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

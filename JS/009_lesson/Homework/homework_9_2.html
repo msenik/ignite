@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 9, homework, Task 2</title>
+  <style>
+    #wrapper {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      background-color: transparent;
+      border-radius: 50%;
+      transition: all .1s;
+    }
+
+    #circle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+  <script>
+    /*
+Задача 2.
+Создайте круг красного цвета с надписью "Скидка". Когда курсор пользователя будет приближаться к ней,
+"Скидка" должна от него "убегать", не давая пользователю нажать на красный круг.
+Если круг будет выйдет за одну из сторон экрана, то он должен, появится с противоположной стороны.
+*/
+    window.addEventListener("load", function () {
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      wrapper.addEventListener("mouseenter", function (e) {
+        var windowW = document.documentElement.clientWidth;
+        var widnowH = document.documentElement.clientHeight
+        var newLeftPos = getRandomInt(0, windowW - e.target.clientWidth);
+        var newTopPos = getRandomInt(0, widnowH - e.target.clientHeight);
+        e.target.style.left = newLeftPos + 'px';
+        e.target.style.top = newTopPos + 'px';
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="circle">Скидка!</div>
+  </div>
+</body>
+
+</html>

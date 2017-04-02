@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 9.3, classwork</title>
+  <script>
+    /*
+Задача 3.
+Создайте поле ввода. При помощи событий клавиатуры сделайте так, чтобы в поле можно было вводить только цифры.
+*/
+    window.addEventListener('load', function () {
+      numberInput.addEventListener('keydown', function (e) {
+        var key = parseInt(e.key);
+        if (isNaN(key)) {
+          e.preventDefault();
+        }
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <input type="text" id="numberInput">
+</body>
+
+</html>

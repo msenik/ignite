@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 9, homework, Task 3</title>
+  <style>
+    div {
+      width: 50px;
+      height: 50px;
+      background-color: green;
+      position: absolute;
+      top: 50px;
+    }
+  </style>
+  <script>
+    /*
+Задача 3.
+Создайте страницу с двумя полями ввода, кнопкой и элементом div с шириной и высотой 50px.
+Создайте сценарий, который по нажатию на кнопку будет перемещать div в координаты,
+указанные в полях ввода. В случае, если при нажатии кнопки хотя бы одно из полей ввода не заполнено,
+пользователь должен получить предупреждение,
+а событие click должно быть отменено.
+
+*/
+    window.addEventListener("load", function () {
+      btn.onclick = function () {
+        var left = parseInt(field1.value);
+        var top = parseInt(field2.value);
+        if (!left || !top) {
+          alert('Обидва поля повинні бути заповненими');
+          return;
+        }
+        console.log('a');
+        var width = rect.clientHeight;
+        var height = rect.clientWidth;
+        rect.style.left = left - width / 2 + 'px';
+        rect.style.top = top - height / 2 + 'px';
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <input type="number" id="field1" placeholder="Координата X">
+  <input type="number" id="field2" placeholder="Координата Y">
+  <button id="btn">Moove to</button>
+  <div id="rect"></div>
+</body>
+
+</html>
