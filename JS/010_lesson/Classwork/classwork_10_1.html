@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="classwork_8_1.css"></link>
+  <title>Lesson 10.1, classwork</title>
+  <script>
+/*
+Задача 1.
+Создайте страницу с кнопкой. Создайте код,
+который загрузит на страницу картинку img.jpg (файл находитя в папке classwork)
+асинхронно через секунду после загрузки страницы.
+*/
+window.addEventListener("load", function(e){
+ function loadPicture(){
+   var img = document.createElement('img');
+   img.src = 'img.jpg';
+   document.body.appendChild(img);
+ }
+ setTimeout(loadPicture, 1000);
+});
+
+  </script>
+</head>
+<body>
+  <button id="load">Useless button</button><br>
+</body>
+</html>

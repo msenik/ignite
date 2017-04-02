@@ -26,7 +26,17 @@
           alert(xhr.status + ': ' + xhr.statusText);
         } else {
           // вывести результат
-          alert(xhr.responseText);
+          try{
+            var arr = JSON.parse(xhr.responseText);
+            var ul = document.createElement('ul');
+            var html = arr.map(function(obj, i){
+              return `<li><a href="${obj.imageUrl}" title="${obj.snippet}">${obj.name}</a></li>`;
+            }).join('');
+          } catch(e){
+            alert('Помилка! '+e.message);
+          }
+          ul.innerHTML = html;
+          document.body.appendChild(ul);
         }
 
       }
