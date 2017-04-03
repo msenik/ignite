@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 10.3, homework</title>
+  <script>
+/*
+Задача 3.
+Разработайте страницу с двумя полями ввода и кнопкой.
+Пользователь должен вводить в поля ввода целочисленный значения,
+а нажатие по кнопке должно приводить к асинхронному запросу на сервер.
+Запрашивать следует обработчик CalcHandler.ashx, который находиться вместе с задачей в папке Homework,
+обработчик принимает два post параметра с именами ‘a’ и ‘b'.
+Результат который возвращает обработчик выведите на страницу (рекомендуется выполнять задачу в Visual Studio).
+*/
+window.onload = function(){
+
+  btn.onclick = function getData(url){
+    var a = num1.value;
+    var b = num2.value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'CalcHandler.ashx');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    xhr.send('a='+a+'&b='+b);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      if (xhr.status != 200) {
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        alert(xhr.responseText);
+      }
+    };
+  }
+
+}
+  </script>
+</head>
+<body>
+  <input type="number" id="num1">
+  <input type="number" id="num2">
+  <button id="btn">Get data</button>
+</body>
+</html>

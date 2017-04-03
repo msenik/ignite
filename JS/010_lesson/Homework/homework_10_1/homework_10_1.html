@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 10.1, homework</title>
+  <script>
+/*
+Задача 1.
+Создайте две HTML страницы с разным контентом. Создайте страницу,
+в которой находиться сценарий загружающий и отображающий контент двух этих
+страниц при нажатии на кнопку. Контент должен загружаться асинхронно.
+*/
+window.onload = function(){
+
+function getPage(pageUrl){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', pageUrl);
+  xhr.send();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4) return;
+    if (xhr.status != 200) {
+      alert(xhr.status + ': ' + xhr.statusText);
+    } else {
+      var h = document.createElement('html');
+      h.innerHTML = xhr.responseText;
+      var div = document.createElement('div');
+      div.innerHTML = h.getElementsByTagName('body')[0].innerHTML;
+      document.body.appendChild(div);
+    }
+  }
+}
+
+  getContent.onclick = function(){
+    getPage('page_1.html');
+    getPage('page_2.html');
+  }
+
+}
+  </script>
+</head>
+<body>
+  <button id="getContent">Загрузити контент</button>
+</body>
+</html>

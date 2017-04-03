@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="classwork_8_1.css"></link>
   <title>Lesson 10.1, classwork</title>
   <script>
 /*
@@ -12,18 +11,26 @@
 который загрузит на страницу картинку img.jpg (файл находитя в папке classwork)
 асинхронно через секунду после загрузки страницы.
 */
-window.addEventListener("load", function(e){
- function loadPicture(){
-   var img = document.createElement('img');
-   img.src = 'img.jpg';
-   document.body.appendChild(img);
- }
- setTimeout(loadPicture, 1000);
-});
-
+window.onload = function(){
+  loadBtn.addEventListener("click", function(e){
+  if( document.getElementsByTagName('img').length > 0 ) return;
+   var xhr = new XMLHttpRequest();
+   xhr.responseType = 'arraybuffer';
+   xhr.onload = function() {
+       var blb = new Blob([xhr.response], {type: 'image/jpg'});
+       var url = (window.URL || window.webkitURL).createObjectURL(blb);
+       i = new Image();
+       i.src = url;
+       document.body.append(i);
+   }
+   xhr.open('GET', 'img.jpg');
+   xhr.send();
+   setTimeout(loadPicture, 1000);
+  });
+}
   </script>
 </head>
 <body>
-  <button id="load">Useless button</button><br>
+  <button id="loadBtn">Useless button</button><br>
 </body>
 </html>
